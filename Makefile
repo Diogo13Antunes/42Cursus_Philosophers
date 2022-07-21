@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+         #
+#    By: diogoantunes <diogoantunes@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 14:53:11 by dcandeia          #+#    #+#              #
-#    Updated: 2022/04/21 11:31:07 by dcandeia         ###   ########.fr        #
+#    Updated: 2022/07/21 10:28:27 by diogoantune      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,8 @@ SRC_PATH = ./sources
 
 OBJ_PATH = ./objects
 
-SRC_NAME =	check_args.c				\
-			get_arguments.c				\
-			errors.c					\
-			utils.c						\
+SRC_NAME =	check_arguments.c		\
+			error_handler.c			\
 			main.c
 
 OBJS = $(addprefix $(OBJ_PATH)/, $(SRC_NAME:.c=.o))
@@ -40,7 +38,6 @@ SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	make norminette
 	$(CC) $(CFLAGS) $(OBJS) $(INC) $(EXTRA_FLAGS) -o $(NAME)
 	echo "\x1b[36m[PHILOSOPHERS COMPILED]\x1b[0m"
 
