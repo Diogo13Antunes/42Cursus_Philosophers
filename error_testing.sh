@@ -1,4 +1,5 @@
-clear && make
+make re && clear
+
 printf "\033[0;33m"
 printf "/////////////////////////////////////////\n"
 printf "	Error Testing Philosophers\n"
@@ -38,4 +39,9 @@ printf "\n"
 printf "\033[0;31mWith Numbers and Letters 💩\n\033[0m"
 printf "\033[0;97mTest -> ./philo 123 ba15ta 25 laranja\n\033[0m"
 ./philo 123 ba15ta 25 laranja
+printf "\n"
+
+printf "\033[0;31mWith Numbers and Letters 💩\n\033[0m"
+printf "\033[0;97mTest -> ./philo 5 2147483648 3147483647 214748\n\033[0m"
+./philo 5 2147483648 3147483647 214748
 printf "\n"
