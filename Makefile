@@ -6,7 +6,7 @@
 #    By: diogoantunes <diogoantunes@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 14:53:11 by dcandeia          #+#    #+#              #
-#    Updated: 2022/07/21 10:28:27 by diogoantune      ###   ########.fr        #
+#    Updated: 2022/08/02 10:31:41 by diogoantune      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,8 +38,9 @@ SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 all: $(NAME)
 
 $(NAME) : $(OBJS)
+	make norminette
 	$(CC) $(CFLAGS) $(OBJS) $(INC) $(EXTRA_FLAGS) -o $(NAME)
-	echo "\x1b[36m[PHILOSOPHERS COMPILED]\x1b[0m"
+	@echo "\x1b[36m[PHILOSOPHERS COMPILED]\x1b[0m"
 
 $(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
 	mkdir -p objects
@@ -47,16 +48,15 @@ $(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
 
 norminette:
 	clear
-	echo "\x1b[31m[NORMINETTE]\x1b[0m"
-	norminette | egrep -B1 'Error|Warning' | sed ''/Error/s//$(printf "\033[31m\033[4mError\033[0m")/'' | sed ''/Warning/s//$(printf "\033[33m\033[4mWarning\033[0m")/''
+	@./norm.sh
 
 clean:
 	rm -rf $(OBJ_PATH)
-	echo "\033[33mall $(NAME).o files are removed\033[0m"
+	@echo "\033[33mall $(NAME).o files are removed\033[0m"
 
 fclean: clean
 	rm -f $(NAME)
-	echo "\033[31m$(NAME) is deleted\033[0m"
+	@echo "\033[31m$(NAME) is deleted\033[0m"
 
 re: fclean all
 
