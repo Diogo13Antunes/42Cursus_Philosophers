@@ -6,7 +6,7 @@
 /*   By: diogoantunes <diogoantunes@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 09:54:48 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/07/21 10:00:13 by diogoantune      ###   ########.fr       */
+/*   Updated: 2022/08/02 09:42:25 by diogoantune      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ void	put_error_msg(char *msg)
 		write(1, &msg[i], 1);
 		i++;
 	}
-	write(1, "\n", 1);	
+	write(1, "\n", 1);
 }

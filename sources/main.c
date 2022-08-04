@@ -6,7 +6,7 @@
 /*   By: diogoantunes <diogoantunes@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 17:03:52 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/07/21 10:30:31 by diogoantune      ###   ########.fr       */
+/*   Updated: 2022/08/03 11:02:08 by diogoantune      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,16 @@ Arguments
 
 int	main(int ac, char **av)
 {
+	int	i;
+
+	i = 0;
 	if (check_arguments(ac, av))
 		return (-1);
-	
+	else
+		printf("ARGS > [OK]\n");
+	while (av[i])
+	{
+		printf("[%s]\n", av[i]);
+		i++;
+	}
 }

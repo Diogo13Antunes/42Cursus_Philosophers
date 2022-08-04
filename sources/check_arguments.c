@@ -6,27 +6,70 @@
 /*   By: diogoantunes <diogoantunes@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 09:27:20 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/07/21 10:27:51 by diogoantune      ###   ########.fr       */
+/*   Updated: 2022/08/04 11:36:36 by diogoantune      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-static int	ft_isdigit(char **strs)
+static long int	ft_atoi(const char *str)
 {
-	int	i;
-	int	ii;
+	int			sinal;
+	long int	numero;
+	int			i;
 
 	i = 0;
-	while (strs[i])
+	sinal = 1;
+	numero = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		ii = 0;
-		while (strs[i][ii])
-		{
-			if (strs[i][ii] < 48 || strs[i][ii] > 57)
-				return (-1);
-			ii++;
-		}
+		if (str[i] == '-')
+			sinal *= -1;
+		i++;
+		if (str[i] == '-' || str[i] == '+')
+			return (0);
+	}
+	while (str[i] >= 48 && str[i] <= 57)
+		numero = (numero * 10) + (str[i++] - 48);
+	return (numero * sinal);
+}
+
+static int	ft_isnbr(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			i++;
+		if (str[i] == '-' || str[i] == '+')
+			return (-1);
+	}
+	while (str[i])
+	{
+		if (str[i] < 48 || str[i] > 57)
+			return (-1);
+		i++;
+	}
+	return (0);
+}
+
+static int	check_nbrs(char **av)
+{
+	long int	nbr;
+	int			i;
+
+	i = 1;
+	while (av[i])
+	{
+		if (ft_isnbr(av[i]))
+			return (-1);
+		nbr = ft_atoi(av[i]);
+		if (nbr <= 0 || nbr > 2147483647)
+			return (-1);
 		i++;
 	}
 	return (0);
@@ -36,13 +79,13 @@ int	check_arguments(int ac, char **av)
 {
 	if (ac < 5 || ac > 6)
 	{
-		put_error_msg("Invalid number pf Arguments.");
-		return (-1);	
+		put_error_msg("Invalid number of Arguments.");
+		return (-1);
 	}
-	if (ft_isdigit(av))
+	else if (check_nbrs(av))
 	{
-		put_error_msg("All Arguments must be numbers.");
-		return (-1);	
+		put_error_msg("Arguments bigger than 2147483647 or negative.");
+		return (-1);
 	}
 	return (0);
 }
