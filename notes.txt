@@ -1,16 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    notes.txt                                          :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: diogoantunes <diogoantunes@student.42.f    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/04/18 10:36:25 by dcandeia          #+#    #+#              #
-#    Updated: 2022/07/20 17:01:46 by diogoantune      ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-/*
 
 		BLOCO DE NOTAS
 
@@ -65,10 +52,9 @@ MANDATORY PART
 	>>>	To prevent philosophers from duplicating forks, you should protect the forks state with a mutex for each of them.
 
 AEGUMENTS
-> [number_of_philosopher]
-> [time_to_die]
-> [time_to_eat]
-> [time_to_sleep]
-> [number_of_times_each_philosopher_must_eat] // Optional
+>> [number_of_philosopher]
+>> [time_to_die]
+>> [time_to_eat]
+>> [time_to_sleep]
+>> [number_of_times_each_philosopher_must_eat] // Optional
 
-*/
