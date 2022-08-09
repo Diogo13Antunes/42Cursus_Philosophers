@@ -6,20 +6,11 @@
 /*   By: diogoantunes <diogoantunes@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 17:03:52 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/08/09 11:47:10 by diogoantune      ###   ########.fr       */
+/*   Updated: 2022/08/09 12:50:17 by diogoantune      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-
-/*
-Arguments
-> [number_of_philosopher]
-> [time_to_die]
-> [time_to_eat]
-> [time_to_sleep]
-> [number_of_times_each_philosopher_must_eat] // Optional
-*/
 
 static void	print_args(char **args)
 {
