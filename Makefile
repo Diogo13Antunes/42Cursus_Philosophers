@@ -6,7 +6,7 @@
 #    By: diogoantunes <diogoantunes@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 14:53:11 by dcandeia          #+#    #+#              #
-#    Updated: 2022/08/02 10:31:41 by diogoantune      ###   ########.fr        #
+#    Updated: 2022/08/09 11:02:22 by diogoantune      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,10 @@ SRC_PATH = ./sources
 
 OBJ_PATH = ./objects
 
-SRC_NAME =	check_arguments.c		\
-			error_handler.c			\
+SRC_NAME =	check_arguments.c			\
+			error_handler.c				\
+			start_philosophers.c		\
+			str_to_int_converters.c		\
 			main.c
 
 OBJS = $(addprefix $(OBJ_PATH)/, $(SRC_NAME:.c=.o))
@@ -47,7 +49,6 @@ $(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
 	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
 
 norminette:
-	clear
 	@./norm.sh
 
 clean:
