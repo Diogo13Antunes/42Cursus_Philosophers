@@ -23,7 +23,7 @@ ALLOWED FUNCTIONS
 >>	pthread_mutex_lock
 >>	pthread_mutex_unlock
 
-ALLOWED FUNCTIONS
+ALLOWED LIBRARIES
 
 #include <stdio.h>
 #include <string.h>
