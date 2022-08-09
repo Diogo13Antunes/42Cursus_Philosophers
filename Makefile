@@ -6,7 +6,7 @@
 #    By: diogoantunes <diogoantunes@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 14:53:11 by dcandeia          #+#    #+#              #
-#    Updated: 2022/08/09 11:02:22 by diogoantune      ###   ########.fr        #
+#    Updated: 2022/08/09 16:48:54 by diogoantune      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ norminette:
 
 clean:
 	rm -rf $(OBJ_PATH)
-	@echo "\033[33mall $(NAME).o files are removed\033[0m"
+	@echo "\033[33mAll $(NAME).o files are removed\033[0m"
 
 fclean: clean
 	rm -f $(NAME)
