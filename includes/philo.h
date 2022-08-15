@@ -6,7 +6,7 @@
 /*   By: diogoantunes <diogoantunes@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:53:07 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/08/09 11:32:17 by diogoantune      ###   ########.fr       */
+/*   Updated: 2022/08/10 14:31:30 by diogoantune      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct s_philos
 	int				t_life;
 	int				nbr_eats;
 	pthread_t		philo;
+	pthread_mutex_t	f_right;
+	pthread_mutex_t	f_left;
 }				t_philos;
 
 //================================ Prototypes ==================================
@@ -58,6 +60,9 @@ int			check_arguments(int ac, char **av);
 /* start_philosophers.c */
 t_philos	**start_philos(char **args);
 t_philos	**init_threads(t_philos **philos, int nbr_philos);
+
+/* philos_routine.c */
+void		*routine(void *philos);
 
 //==============================================================================
 

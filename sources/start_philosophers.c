@@ -6,20 +6,20 @@
 /*   By: diogoantunes <diogoantunes@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 13:00:14 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/08/09 11:39:09 by diogoantune      ###   ########.fr       */
+/*   Updated: 2022/08/10 14:31:02 by diogoantune      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	*send_msg(void *a)
-{
-	(void)a;
-	printf("Creating thread...\n");
-	sleep(2);
-	printf("Thread created!\n");
-	return (NULL);
-}
+// void	*send_msg(void *a)
+// {
+// 	(void)a;
+// 	printf("Creating thread...\n");
+// 	sleep(2);
+// 	printf("Thread created!\n");
+// 	return (NULL);
+// }
 
 t_philos	**init_threads(t_philos **philos, int nbr_philos)
 {
@@ -27,7 +27,7 @@ t_philos	**init_threads(t_philos **philos, int nbr_philos)
 
 	i = -1;
 	while (++i < nbr_philos)
-		if (pthread_create(&philos[i]->philo, NULL, &send_msg, NULL))
+		if (pthread_create(&philos[i]->philo, NULL, &routine, (void *)philos))
 			return (NULL);
 	i = -1;
 	while (++i < nbr_philos)

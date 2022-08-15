@@ -6,7 +6,7 @@
 #    By: diogoantunes <diogoantunes@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 14:53:11 by dcandeia          #+#    #+#              #
-#    Updated: 2022/08/09 16:48:54 by diogoantune      ###   ########.fr        #
+#    Updated: 2022/08/10 14:24:43 by diogoantune      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC_NAME =	check_arguments.c			\
 			error_handler.c				\
 			start_philosophers.c		\
 			str_to_int_converters.c		\
+			philos_routine.c			\
 			main.c
 
 OBJS = $(addprefix $(OBJ_PATH)/, $(SRC_NAME:.c=.o))
