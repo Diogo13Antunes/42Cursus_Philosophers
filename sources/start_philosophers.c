@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:27:10 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/08/16 17:28:48 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/08/16 17:36:36 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	finish_threads(t_philos **philos, int nbr_philos)
 t_philos	**init_threads(t_philos **philos, int nbr_philos)
 {
 	int				i;
-	unsigned int	*start_t;
+	// unsigned int	*start_t;
 	pthread_mutex_t	*begin;
 
 	i = -1;

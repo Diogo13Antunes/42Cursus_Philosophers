@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: diogoantunes <diogoantunes@student.42.f    +#+  +:+       +#+         #
+#    By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 14:53:11 by dcandeia          #+#    #+#              #
-#    Updated: 2022/08/16 16:21:41 by dcandeia         ###   ########.fr        #
+#    Updated: 2022/08/16 17:37:52 by dcandeia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRC_NAME =	check_arguments.c			\
 			start_philosophers.c		\
 			str_to_int_converters.c		\
 			philos_routine.c			\
+			set_arguments.c				\
 			main.c
 
 OBJS = $(addprefix $(OBJ_PATH)/, $(SRC_NAME:.c=.o))

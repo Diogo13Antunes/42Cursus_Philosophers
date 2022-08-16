@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diogoantunes <diogoantunes@student.42.f    +#+  +:+       +#+        */
+/*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 17:03:52 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/08/09 12:50:17 by diogoantune      ###   ########.fr       */
+/*   Updated: 2022/08/16 17:39:12 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(int ac, char **av)
 	if (check_arguments(ac, av))
 		return (-1);
 	print_args(av);
-	set_args(&data);
+	set_data(&data, av);
 	philosopher = start_philos(data);
 	philosopher = init_threads(philosopher, ft_atoi(av[1]));
 	print_philos(philosopher);

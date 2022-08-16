@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:53:07 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/08/16 17:31:24 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/08/16 17:37:34 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,15 @@ void			put_error_msg(char *msg);
 int				check_arguments(int ac, char **av);
 
 /* start_philosophers.c */
-t_philos		**start_philos(char **args);
+t_philos		**start_philos(t_data data);
 t_philos		**init_threads(t_philos **philos, int nbr_philos);
 unsigned long	get_time(void);
 
 /* philos_routine.c */
 void			*routine(void *philos);
+
+/* set_arguments.c */
+void	set_data(t_data *data, char **args);
 
 //==============================================================================
 
