@@ -48,11 +48,13 @@ static void	print_philos(t_philos **philos)
 int	main(int ac, char **av)
 {
 	t_philos	**philosopher;
+	t_data		data;
 
 	if (check_arguments(ac, av))
 		return (-1);
 	print_args(av);
-	philosopher = start_philos(av);
+	set_args(&data);
+	philosopher = start_philos(data);
 	philosopher = init_threads(philosopher, ft_atoi(av[1]));
 	print_philos(philosopher);
 }

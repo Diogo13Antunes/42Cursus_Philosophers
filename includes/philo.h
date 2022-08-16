@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diogoantunes <diogoantunes@student.42.f    +#+  +:+       +#+        */
+/*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:53:07 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/08/10 14:31:30 by diogoantune      ###   ########.fr       */
+/*   Updated: 2022/08/16 17:31:24 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,15 @@ Arguments
 # define FALSE	0
 //================================= Structs ====================================
 
+typedef struct s_data
+{
+	int			nbr_philos;
+	int			t_eat;
+	int			t_sleep;
+	int			t_life;
+	int			nbr_eats;
+}				t_data;
+
 typedef struct s_philos
 {
 	int				id;
@@ -45,7 +54,6 @@ typedef struct s_philos
 	pthread_mutex_t	*f_right;
 	pthread_mutex_t	f_left;
 	pthread_mutex_t	*start;
-	unsigned int	*time_start;
 }				t_philos;
 
 //================================ Prototypes ==================================
