@@ -36,33 +36,37 @@ Arguments
 
 typedef struct s_philos
 {
+	int				id;
 	int				t_eat;
 	int				t_sleep;
 	int				t_life;
 	int				nbr_eats;
 	pthread_t		philo;
-	pthread_mutex_t	f_right;
+	pthread_mutex_t	*f_right;
 	pthread_mutex_t	f_left;
+	pthread_mutex_t	*start;
+	unsigned int	*time_start;
 }				t_philos;
 
 //================================ Prototypes ==================================
 
 /* str_to_int_converters.c */
-long int	ft_atoi_long(const char *str);
-int			ft_atoi(const char *str);
+long int		ft_atoi_long(const char *str);
+int				ft_atoi(const char *str);
 
 /* error_handler.c */
-void		put_error_msg(char *msg);
+void			put_error_msg(char *msg);
 
 /* check_arguments.c */
-int			check_arguments(int ac, char **av);
+int				check_arguments(int ac, char **av);
 
 /* start_philosophers.c */
-t_philos	**start_philos(char **args);
-t_philos	**init_threads(t_philos **philos, int nbr_philos);
+t_philos		**start_philos(char **args);
+t_philos		**init_threads(t_philos **philos, int nbr_philos);
+unsigned long	get_time(void);
 
 /* philos_routine.c */
-void		*routine(void *philos);
+void			*routine(void *philos);
 
 //==============================================================================
 

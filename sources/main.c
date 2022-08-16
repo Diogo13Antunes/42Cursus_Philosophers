@@ -22,6 +22,7 @@ static void	print_args(char **args)
 	if (args[5])
 		printf("Number of eats   = [ %s ]\n", args[5]);
 	printf("\n==========================================\n");
+	printf("\n");
 }
 
 static void	print_philos(t_philos **philos)
@@ -29,9 +30,11 @@ static void	print_philos(t_philos **philos)
 	int	i;
 
 	i = 0;
+	printf("\n");
+	printf("================== PHILOS ==================\n\n");
 	while (philos[i])
 	{
-		printf("[%d] ", i);
+		printf("[%d] ", philos[i]->id);
 		printf("[%d] ", philos[i]->t_life);
 		printf("[%d] ", philos[i]->t_eat);
 		printf("[%d] ", philos[i]->t_sleep);
@@ -39,6 +42,7 @@ static void	print_philos(t_philos **philos)
 		printf("\n");
 		i++;
 	}
+	printf("\n============================================\n");
 }
 
 int	main(int ac, char **av)
