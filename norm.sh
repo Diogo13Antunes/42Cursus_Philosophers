@@ -1,4 +1,5 @@
-/Users/diogoantunes/norminette/venv/bin/norminette | egrep -B1 'Error|Warning' >check_norm
+#/Users/diogoantunes/norminette/venv/bin/norminette | egrep -B1 'Error|Warning' >check_norm
+norminette | egrep -B1 'Error|Warning' >check_norm
 
 printf "\x1b[33m[NORMINETTE]: \x1b[0m"
 
