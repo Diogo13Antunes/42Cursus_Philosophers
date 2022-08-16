@@ -6,7 +6,7 @@
 #    By: diogoantunes <diogoantunes@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 14:53:11 by dcandeia          #+#    #+#              #
-#    Updated: 2022/08/10 14:24:43 by diogoantune      ###   ########.fr        #
+#    Updated: 2022/08/16 16:21:41 by dcandeia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ all: $(NAME)
 $(NAME) : $(OBJS)
 	make norminette
 	$(CC) $(CFLAGS) $(OBJS) $(INC) $(EXTRA_FLAGS) -o $(NAME)
-	@echo "\x1b[36m[PHILOSOPHERS COMPILED]\x1b[0m"
+	@echo "\e[1;36m[PHILOSOPHERS COMPILED]\e[0m"
 
 $(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
 	mkdir -p objects
@@ -54,11 +54,11 @@ norminette:
 
 clean:
 	rm -rf $(OBJ_PATH)
-	@echo "\033[33mAll $(NAME).o files are removed\033[0m"
+	@echo "\e[1;33mAll $(NAME).o files are removed\e[0m"
 
 fclean: clean
 	rm -f $(NAME)
-	@echo "\033[31m$(NAME) is deleted\033[0m"
+	@echo "\e[1;31m$(NAME) is deleted\e[0m"
 
 re: fclean all
 
