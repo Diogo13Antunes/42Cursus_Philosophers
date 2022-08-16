@@ -14,9 +14,6 @@
 
 static void	print_args(char **args)
 {
-	int	i;
-
-	i = 1;
 	printf("================== ARGS ==================\n\n");
 	printf("Number of Philos = [ %s ]\n", args[1]);
 	printf("Time to die      = [ %s ]\n", args[2]);
