@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:24:47 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/08/16 17:27:35 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/08/31 17:30:46 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*routine(void *philos)
 	t_philos		phi;
 
 	phi = *(t_philos *)philos;
-	printf("Philo [%d] creado!\n", phi.id);
+	printf("Philo [%d] created!\n", phi.id);
+	// sleep(2);
+	// printf("Philo [%d] Finished\n", phi.id);
 	return (NULL);
 }

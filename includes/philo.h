@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:53:07 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/08/16 17:37:34 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/08/31 15:58:19 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ typedef struct s_data
 	int			nbr_eats;
 }				t_data;
 
+typedef struct s_fork
+{
+	int				status;
+	pthread_mutex_t	lock;
+}				t_fork;
+
 typedef struct s_philos
 {
 	int				id;
@@ -51,8 +57,8 @@ typedef struct s_philos
 	int				t_life;
 	int				nbr_eats;
 	pthread_t		philo;
-	pthread_mutex_t	*f_right;
-	pthread_mutex_t	f_left;
+	t_fork			*left;
+	t_fork			right;
 	pthread_mutex_t	*start;
 }				t_philos;
 
@@ -69,8 +75,8 @@ void			put_error_msg(char *msg);
 int				check_arguments(int ac, char **av);
 
 /* start_philosophers.c */
-t_philos		**start_philos(t_data data);
-t_philos		**init_threads(t_philos **philos, int nbr_philos);
+t_philos		*start_philos(t_data data);
+t_philos		*init_threads(t_philos *philos, int nbr_philos);
 unsigned long	get_time(void);
 
 /* philos_routine.c */
