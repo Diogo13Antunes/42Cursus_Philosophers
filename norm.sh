@@ -1,4 +1,3 @@
-#/Users/diogoantunes/norminette/venv/bin/norminette | egrep -B1 'Error|Warning' >check_norm
 norminette | egrep -B1 'Error|Warning' >check_norm
 
 printf "\e[1;33m[NORMINETTE]: \e[0m"
