@@ -52,6 +52,7 @@ $(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
 	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
 
 norminette:
+	#clear
 	@./norm.sh
 
 clean:

@@ -18,7 +18,5 @@ void	*routine(void *philos)
 
 	phi = *(t_philos *)philos;
 	printf("Philo [%d] created!\n", phi.id);
-	// sleep(2);
-	// printf("Philo [%d] Finished\n", phi.id);
 	return (NULL);
 }

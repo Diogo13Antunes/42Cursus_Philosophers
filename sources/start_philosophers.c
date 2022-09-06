@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_philosophers.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:27:10 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/08/31 16:08:18 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/09/06 12:19:59 by piriquito        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	finish_threads(t_philos **philos, int nbr_philos)
 t_philos	*init_threads(t_philos *philos, int nbr_philos)
 {
 	int				i;
-	// unsigned int	*start_t;
 	pthread_mutex_t	*begin;
 
 	i = -1;
