@@ -85,6 +85,9 @@ void			*routine(void *philos);
 /* set_arguments.c */
 void	set_data(t_data *data, char **args);
 
+/* utils.c */
+void	ft_putstr_fd(char *str, int fd);
+
 //==============================================================================
 
 #endif
