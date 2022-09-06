@@ -14,11 +14,7 @@
 
 void	put_error_msg(char *msg)
 {
-	int	i;
-
-	i = 0;
-	write(STDERR_FILENO, "Error: ", 7);
-	while (msg[i])
-		write(STDERR_FILENO, &msg[i++], 1);
-	write(STDERR_FILENO, "\n", 1);
+	ft_putstr_fd("Error: ", 1);
+	ft_putstr_fd(msg, 1);
+	ft_putstr_fd("\n", 1);
 }

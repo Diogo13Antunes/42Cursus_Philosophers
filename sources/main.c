@@ -56,5 +56,4 @@ int	main(int ac, char **av)
 	set_data(&data, av);
 	philosopher = start_philos(data);
 	philosopher = init_threads(philosopher, ft_atoi(av[1]));
-	// print_philos(philosopher, data.nbr_philos);
 }
