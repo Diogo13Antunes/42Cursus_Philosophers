@@ -33,6 +33,7 @@ SRC_NAME =	check_arguments.c			\
 			str_to_int_converters.c		\
 			philos_routine.c			\
 			set_arguments.c				\
+			utils.c						\
 			main.c
 
 OBJS = $(addprefix $(OBJ_PATH)/, $(SRC_NAME:.c=.o))
