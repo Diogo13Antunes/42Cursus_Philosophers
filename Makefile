@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+         #
+#    By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 14:53:11 by dcandeia          #+#    #+#              #
-#    Updated: 2022/08/16 17:37:52 by dcandeia         ###   ########.fr        #
+#    Updated: 2022/09/09 15:42:32 by piriquito        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC_NAME =	check_arguments.c			\
 			philos_routine.c			\
 			set_arguments.c				\
 			utils.c						\
+			time_utils.c				\
 			main.c
 
 OBJS = $(addprefix $(OBJ_PATH)/, $(SRC_NAME:.c=.o))
@@ -43,7 +44,8 @@ SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	make norminette
+	clear
+	@./norm.sh
 	$(CC) $(CFLAGS) $(OBJS) $(INC) $(EXTRA_FLAGS) -o $(NAME)
 	@echo "\e[1;36m[PHILOSOPHERS COMPILED]\e[0m"
 
