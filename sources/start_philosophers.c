@@ -6,7 +6,7 @@
 /*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:27:10 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/09/06 12:19:59 by piriquito        ###   ########.fr       */
+/*   Updated: 2022/09/09 13:16:54 by piriquito        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,14 @@ void	finish_threads(t_philos **philos, int nbr_philos)
 
 t_philos	*init_threads(t_philos *philos, int nbr_philos)
 {
-	int				i;
-	pthread_mutex_t	*begin;
+	int	i;
 
 	i = -1;
-	begin = malloc(sizeof(pthread_mutex_t));
-	if (!begin)
-		return (NULL);
-	pthread_mutex_init(begin, NULL);
-	pthread_mutex_lock(begin);
 	while (++i < nbr_philos)
 	{
-		philos[i].start = begin;
 		if (pthread_create(&philos[i].philo, NULL, &routine, &philos[i]))
 			return (NULL);
 	}
-	pthread_mutex_unlock(philos[0].start);
 	i = -1;
 	while (++i < nbr_philos)
 		if (pthread_join(philos[i].philo, NULL))
@@ -58,8 +50,13 @@ t_philos	*init_threads(t_philos *philos, int nbr_philos)
 t_philos	*start_philos(t_data data)
 {
 	t_philos		*philos;
+	int				*init_locker;
 	int				i;
 
+	init_locker = malloc(sizeof(int));
+	if (!init_locker)
+		return (NULL);
+	*init_locker = 2;
 	philos = malloc(sizeof(t_philos) * data.nbr_philos);
 	if (!philos)
 		return (NULL);
@@ -67,6 +64,8 @@ t_philos	*start_philos(t_data data)
 	while (++i < data.nbr_philos)
 	{
 		philos[i].id = i + 1;
+		philos[i].start_locker = init_locker;
+		philos[i].nbr_philos = data.nbr_philos;
 		philos[i].t_life = data.t_life;
 		philos[i].t_eat = data.t_eat;
 		philos[i].t_sleep = data.t_sleep;
