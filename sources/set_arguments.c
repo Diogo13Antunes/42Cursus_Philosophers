@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_arguments.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:13:14 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/08/16 17:24:01 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/09/09 13:26:16 by piriquito        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ void	set_data(t_data *data, char **args)
 	if (args[5])
 		data->nbr_eats = ft_atoi(args[5]);
 	else
-		data->nbr_eats = 0;
+		data->nbr_eats = -1;
 }
