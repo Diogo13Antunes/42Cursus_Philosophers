@@ -6,7 +6,7 @@
 /*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:24:47 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/09/09 13:35:29 by piriquito        ###   ########.fr       */
+/*   Updated: 2022/09/09 17:08:51 by piriquito        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,13 @@ static void	wait_to_init(t_philos *philos)
 
 void	*routine(void *philos)
 {
-	t_philos	*phi;
+	t_philos		*phi;
 
 	phi = (t_philos *)philos;
 	wait_to_init(phi);
+	init_timer(phi);
+	print_time(phi);
+	usleep(1000000);
+	print_time(phi);
 	return (NULL);
 }

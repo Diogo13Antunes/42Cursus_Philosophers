@@ -6,7 +6,7 @@
 /*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:27:10 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/09/09 13:16:54 by piriquito        ###   ########.fr       */
+/*   Updated: 2022/09/09 15:19:54 by piriquito        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_philos	*start_philos(t_data data)
 		philos[i].t_eat = data.t_eat;
 		philos[i].t_sleep = data.t_sleep;
 		philos[i].nbr_eats = data.nbr_eats;
+		philos[i].time = NULL;
 	}
 	return (philos);
 }
