@@ -6,7 +6,7 @@
 /*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:53:07 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/09/09 13:17:15 by piriquito        ###   ########.fr       */
+/*   Updated: 2022/09/09 17:16:35 by piriquito        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ Arguments
 
 typedef struct s_data
 {
-	int			nbr_philos;
-	int			t_eat;
-	int			t_sleep;
-	int			t_life;
-	int			nbr_eats;
+	int				nbr_philos;
+	int				t_eat;
+	int				t_sleep;
+	int				t_life;
+	int				nbr_eats;
 }				t_data;
 
 typedef struct s_fork
@@ -61,33 +61,39 @@ typedef struct s_philos
 	t_fork			*left;
 	t_fork			right;
 	int				*start_locker;
+	unsigned long	*time;
 }				t_philos;
 
 //================================ Prototypes ==================================
 
 /* str_to_int_converters.c */
-long int		ft_atoi_long(const char *str);
-int				ft_atoi(const char *str);
+long int			ft_atoi_long(const char *str);
+int					ft_atoi(const char *str);
 
 /* error_handler.c */
-void			put_error_msg(char *msg);
+void				put_error_msg(char *msg);
 
 /* check_arguments.c */
-int				check_arguments(int ac, char **av);
+int					check_arguments(int ac, char **av);
 
 /* start_philosophers.c */
-t_philos		*start_philos(t_data data);
-t_philos		*init_threads(t_philos *philos, int nbr_philos);
-unsigned long	get_time(void);
+t_philos			*start_philos(t_data data);
+t_philos			*init_threads(t_philos *philos, int nbr_philos);
+unsigned long		get_time(void);
 
 /* philos_routine.c */
-void			*routine(void *philos);
+void				*routine(void *philos);
 
 /* set_arguments.c */
-void			set_data(t_data *data, char **args);
+void				set_data(t_data *data, char **args);
 
 /* utils.c */
-void			ft_putstr_fd(char *str, int fd);
+void				ft_putstr_fd(char *str, int fd);
+
+/* utils_time.c */
+unsigned long int	get_current_time(void);
+void				print_time(t_philos *philos);
+int					init_timer(t_philos *philos);
 
 //==============================================================================
 
