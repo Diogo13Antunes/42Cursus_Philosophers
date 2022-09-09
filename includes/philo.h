@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:53:07 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/08/31 15:58:19 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/09/09 13:17:15 by piriquito        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_fork
 typedef struct s_philos
 {
 	int				id;
+	int				nbr_philos;
 	int				t_eat;
 	int				t_sleep;
 	int				t_life;
@@ -59,7 +60,7 @@ typedef struct s_philos
 	pthread_t		philo;
 	t_fork			*left;
 	t_fork			right;
-	pthread_mutex_t	*start;
+	int				*start_locker;
 }				t_philos;
 
 //================================ Prototypes ==================================
