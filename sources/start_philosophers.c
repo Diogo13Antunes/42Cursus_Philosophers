@@ -6,28 +6,29 @@
 /*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:27:10 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/09/09 15:19:54 by piriquito        ###   ########.fr       */
+/*   Updated: 2022/09/15 10:30:34 by piriquito        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-unsigned long	get_time(void)
-{
-	struct timeval	time;
-
-	gettimeofday(&time, NULL);
-	return ((time.tv_sec / 1000 / 1000) + (time.tv_usec));
-}
-
-void	finish_threads(t_philos **philos, int nbr_philos)
+int	init_forks(t_philos *philos)
 {
 	int	i;
+	int	nbr_philos;
 
 	i = -1;
+	nbr_philos = philos->nbr_philos;
 	while (++i < nbr_philos)
-		if (pthread_join(philos[i]->philo, NULL))
-			return ;
+	{
+		pthread_mutex_init(&philos[i].right.lock, NULL);
+		philos[i].right.status = 0;
+	}
+	i = -1;
+	while (++i < nbr_philos)
+		philos[i + 1].left = &philos[i].right;
+	philos[0].left = &philos[nbr_philos - 1].right;
+	return (0);
 }
 
 t_philos	*init_threads(t_philos *philos, int nbr_philos)
@@ -72,5 +73,6 @@ t_philos	*start_philos(t_data data)
 		philos[i].nbr_eats = data.nbr_eats;
 		philos[i].time = NULL;
 	}
+	init_forks(philos);
 	return (philos);
 }
