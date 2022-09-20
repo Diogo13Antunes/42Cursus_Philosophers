@@ -6,7 +6,7 @@
 /*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 17:03:52 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/09/09 17:17:12 by piriquito        ###   ########.fr       */
+/*   Updated: 2022/09/20 11:00:45 by piriquito        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ static void	print_philos(t_philos *philos, int nbr_philos)
 	while (i < nbr_philos)
 	{
 		printf("[%d] ", philos[i].id);
-		printf("[%d] ", philos[i].t_life);
-		printf("[%d] ", philos[i].t_eat);
-		printf("[%d] ", philos[i].t_sleep);
+		printf("[%ld] ", philos[i].t_life);
+		printf("[%ld] ", philos[i].t_eat);
+		printf("[%ld] ", philos[i].t_sleep);
 		printf("[%d] ", philos[i].nbr_eats);
 		printf("\n");
 		i++;
@@ -54,6 +54,10 @@ int	main(int ac, char **av)
 		return (-1);
 	set_data(&data, av);
 	philosopher = start_philos(data);
+	if (!philosopher)
+		return (-1);
 	print_philos(philosopher, ft_atoi(av[1]));
 	philosopher = init_threads(philosopher, ft_atoi(av[1]));
+	if (!philosopher)
+		return (-1);
 }
