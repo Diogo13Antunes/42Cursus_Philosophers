@@ -6,7 +6,7 @@
 /*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:53:07 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/09/09 17:16:35 by piriquito        ###   ########.fr       */
+/*   Updated: 2022/09/20 10:57:33 by piriquito        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ typedef struct s_philos
 {
 	int				id;
 	int				nbr_philos;
-	int				t_eat;
-	int				t_sleep;
-	int				t_life;
+	unsigned long	t_eat;
+	unsigned long	t_sleep;
+	unsigned long	t_life;
 	int				nbr_eats;
 	pthread_t		philo;
 	t_fork			*left;
