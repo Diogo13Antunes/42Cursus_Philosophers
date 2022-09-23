@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+         #
+#    By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 14:53:11 by dcandeia          #+#    #+#              #
-#    Updated: 2022/09/09 15:42:32 by piriquito        ###   ########.fr        #
+#    Updated: 2022/09/23 11:34:06 by dcandeia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ $(NAME) : $(OBJS)
 	clear
 	@./norm.sh
 	$(CC) $(CFLAGS) $(OBJS) $(INC) $(EXTRA_FLAGS) -o $(NAME)
-	@echo "\e[1;36m[PHILOSOPHERS COMPILED]\e[0m"
+	@echo "\033[1;36m[PHILOSOPHERS COMPILED]\033[0m"
 
 $(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
 	mkdir -p objects
@@ -59,11 +59,11 @@ norminette:
 
 clean:
 	rm -rf $(OBJ_PATH)
-	@echo "\e[1;33mAll $(NAME).o files are removed\e[0m"
+	@echo "\033[1;33mAll $(NAME).o files are removed\033[0m"
 
 fclean: clean
 	rm -f $(NAME)
-	@echo "\e[1;31m$(NAME) is deleted\e[0m"
+	@echo "\033[1;31m$(NAME) is deleted\033[0m"
 
 re: fclean all
 
