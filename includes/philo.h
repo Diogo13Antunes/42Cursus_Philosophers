@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
+/*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:53:07 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/09/20 10:57:33 by piriquito        ###   ########.fr       */
+/*   Updated: 2022/09/23 10:08:31 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ Arguments
 //================================= Defines ====================================
 # define TRUE	1
 # define FALSE	0
+
+# define ACTION_TAKE_FORK "has taken a fork"
+# define ACTION_EATING "is eating"
+# define ACTION_SLEEPING "is sleeping"
+# define ACTION_THINKING "is thinking"
+# define ACTION_DIED "died"
+
 //================================= Structs ====================================
 
 typedef struct s_data
