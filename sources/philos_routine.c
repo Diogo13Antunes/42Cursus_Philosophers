@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   philos_routine.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
+/*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:24:47 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/09/20 10:58:03 by piriquito        ###   ########.fr       */
+/*   Updated: 2022/09/23 11:31:57 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+static void	print_philos_actions(t_philos *philo, char *action);
+static void	wait_to_init(t_philos *philos);
+
+void	*routine(void *philos)
+{
+	t_philos		*phi;
+
+	phi = (t_philos *)philos;
+	wait_to_init(phi);
+	init_timer(phi);
+	print_philos_actions(phi, ACTION_THINKING);
+	return (NULL);
+}
 
 static void	wait_to_init(t_philos *philos)
 {
@@ -28,14 +42,18 @@ static void	wait_to_init(t_philos *philos)
 			pthread_mutex_unlock(&lock);
 		}
 	}
+	pthread_mutex_destroy(&lock);
 }
 
-void	*routine(void *philos)
+static void	print_philos_actions(t_philos *philo, char *action)
 {
-	t_philos		*phi;
+	unsigned long	time;
+	pthread_mutex_t	lock;
 
-	phi = (t_philos *)philos;
-	wait_to_init(phi);
-	init_timer(phi);
-	return (NULL);
+	pthread_mutex_init(&lock, NULL);
+	pthread_mutex_lock(&lock);
+	time = get_current_time() - *(philo->time);
+	printf("%ld %d %s\n", time, philo->id, action);
+	pthread_mutex_unlock(&lock);
+	pthread_mutex_destroy(&lock);
 }
