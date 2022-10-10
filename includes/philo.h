@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:53:07 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/09/23 10:08:31 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/10 16:13:37 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ Arguments
 # define TRUE	1
 # define FALSE	0
 
-# define ACTION_TAKE_FORK "has taken a fork"
-# define ACTION_EATING "is eating"
-# define ACTION_SLEEPING "is sleeping"
-# define ACTION_THINKING "is thinking"
-# define ACTION_DIED "died"
+// # define ACTION_TAKE__FORK	"has taken a fork"
+# define ACTION_TAKE_LEFT_FORK	"\e[1;36mhas taken a left fork\e[0m"
+# define ACTION_TAKE_RIGHT_FORK	"\e[1;36mhas taken a right fork\e[0m"
+# define ACTION_EATING			"\e[1;33mis eating\e[0m"
+# define ACTION_SLEEPING		"\e[1;34mis sleeping\e[0m"
+# define ACTION_THINKING		"\e[1;35mis thinking\e[0m"
+# define ACTION_DIED			"\e[1;31mdied\e[0m"
 
 //================================= Structs ====================================
 
@@ -68,7 +70,9 @@ typedef struct s_philos
 	t_fork			*left;
 	t_fork			right;
 	int				*start_locker;
-	unsigned long	*time;
+	unsigned long	init_time;
+	unsigned long	last_meal;
+	int				*is_alive;
 }				t_philos;
 
 //================================ Prototypes ==================================
@@ -93,14 +97,23 @@ void				*routine(void *philos);
 
 /* set_arguments.c */
 void				set_data(t_data *data, char **args);
+t_philos			*init_data(t_philos *philos, t_data data);
 
 /* utils.c */
 void				ft_putstr_fd(char *str, int fd);
+void				print_philos_actions(t_philos *philo, char *action);
 
 /* utils_time.c */
 unsigned long int	get_current_time(void);
 void				print_time(t_philos *philos);
 int					init_timer(t_philos *philos);
+
+/* actions_utils.c */
+void	action_pickup_forks_evens(t_philos *phi);
+void	action_pickup_forks_odds(t_philos *phi);
+void	action_drop_forcks(t_philos *phi);
+void	action_eating(t_philos *phi);
+void	action_died(t_philos *phi);
 
 //==============================================================================
 
