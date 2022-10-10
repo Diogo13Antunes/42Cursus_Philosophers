@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
+/*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 17:03:52 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/09/20 11:00:45 by piriquito        ###   ########.fr       */
+/*   Updated: 2022/10/10 15:19:33 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,25 @@
 // 	printf("\n");
 // }
 
-static void	print_philos(t_philos *philos, int nbr_philos)
-{
-	int	i;
+// static void	print_philos(t_philos *philos, int nbr_philos)
+// {
+// 	int	i;
 
-	i = 0;
-	printf("\n");
-	printf("================== PHILOS ==================\n\n");
-	while (i < nbr_philos)
-	{
-		printf("[%d] ", philos[i].id);
-		printf("[%ld] ", philos[i].t_life);
-		printf("[%ld] ", philos[i].t_eat);
-		printf("[%ld] ", philos[i].t_sleep);
-		printf("[%d] ", philos[i].nbr_eats);
-		printf("\n");
-		i++;
-	}
-	printf("\n============================================\n");
-}
+// 	i = 0;
+// 	printf("\n");
+// 	printf("================== PHILOS ==================\n\n");
+// 	while (i < nbr_philos)
+// 	{
+// 		printf("[%d] ", philos[i].id);
+// 		printf("[%ld] ", philos[i].t_life);
+// 		printf("[%ld] ", philos[i].t_eat);
+// 		printf("[%ld] ", philos[i].t_sleep);
+// 		printf("[%d] ", philos[i].nbr_eats);
+// 		printf("\n");
+// 		i++;
+// 	}
+// 	printf("\n============================================\n\n");
+// }
 
 int	main(int ac, char **av)
 {
@@ -56,7 +56,7 @@ int	main(int ac, char **av)
 	philosopher = start_philos(data);
 	if (!philosopher)
 		return (-1);
-	print_philos(philosopher, ft_atoi(av[1]));
+	// print_philos(philosopher, ft_atoi(av[1]));
 	philosopher = init_threads(philosopher, ft_atoi(av[1]));
 	if (!philosopher)
 		return (-1);

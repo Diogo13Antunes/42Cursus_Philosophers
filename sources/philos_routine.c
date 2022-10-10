@@ -6,14 +6,15 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:24:47 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/09/23 11:31:57 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/10 16:32:48 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-static void	print_philos_actions(t_philos *philo, char *action);
 static void	wait_to_init(t_philos *philos);
+static int	is_everyone_alive(t_philos *phi);
+static int	is_everyone_full_eat(t_philos *phi);
 
 void	*routine(void *philos)
 {
@@ -21,9 +22,50 @@ void	*routine(void *philos)
 
 	phi = (t_philos *)philos;
 	wait_to_init(phi);
-	init_timer(phi);
+	phi->init_time = get_current_time();
+	while (1)
+	{
+		if (!is_everyone_alive(phi) || is_everyone_full_eat(phi))
+		{
+			if (phi->is_alive == 0)
+				action_died(phi);
+		}
+		if (phi->id % 2 == 0)
+			action_pickup_forks_odds(phi);
+		else
+			action_pickup_forks_evens(phi);
+		action_eating(phi);
+		break ;
+	}
 	print_philos_actions(phi, ACTION_THINKING);
 	return (NULL);
+}
+
+static int	is_everyone_alive(t_philos *phi)
+{
+	pthread_mutex_t	*locker;
+
+	locker = malloc(sizeof(pthread_mutex_t));
+	if (get_current_time() - phi->last_meal
+		> phi->t_life + get_current_time())
+	{
+		printf("Aqui\n");
+		pthread_mutex_lock(locker);
+		phi->is_alive = 0;
+		pthread_mutex_unlock(locker);
+		pthread_mutex_destroy(locker);
+		return (0);
+	}
+	pthread_mutex_destroy(locker);
+	return (1);
+}
+
+static int	is_everyone_full_eat(t_philos *phi)
+{
+	if (phi->nbr_eats == 0)
+		return (0);
+	else
+		return (1);
 }
 
 static void	wait_to_init(t_philos *philos)
@@ -42,18 +84,5 @@ static void	wait_to_init(t_philos *philos)
 			pthread_mutex_unlock(&lock);
 		}
 	}
-	pthread_mutex_destroy(&lock);
-}
-
-static void	print_philos_actions(t_philos *philo, char *action)
-{
-	unsigned long	time;
-	pthread_mutex_t	lock;
-
-	pthread_mutex_init(&lock, NULL);
-	pthread_mutex_lock(&lock);
-	time = get_current_time() - *(philo->time);
-	printf("%ld %d %s\n", time, philo->id, action);
-	pthread_mutex_unlock(&lock);
 	pthread_mutex_destroy(&lock);
 }

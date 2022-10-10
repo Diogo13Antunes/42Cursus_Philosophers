@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
+/*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:41:08 by piriquito         #+#    #+#             */
-/*   Updated: 2022/09/09 17:13:14 by piriquito        ###   ########.fr       */
+/*   Updated: 2022/10/10 14:05:11 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,10 @@ unsigned long int	get_current_time(void)
 	return (current_time);
 }
 
-int	init_timer(t_philos *philos)
-{
-	unsigned long	*time;
-
-	time = malloc(sizeof(unsigned long));
-	if (!time)
-		return (-1);
-	*time = get_current_time();
-	philos->time = time;
-	return (0);
-}
-
 void	print_time(t_philos *philos)
 {
 	unsigned long	current_time;
 
-	current_time = get_current_time() - *philos->time;
+	current_time = get_current_time() - philos->init_time;
 	printf("Time [%d] = %ld\n", philos->id, current_time);
 }
