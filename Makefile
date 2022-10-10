@@ -6,7 +6,7 @@
 #    By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 14:53:11 by dcandeia          #+#    #+#              #
-#    Updated: 2022/09/23 11:34:06 by dcandeia         ###   ########.fr        #
+#    Updated: 2022/10/10 15:32:00 by dcandeia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRC_NAME =	check_arguments.c			\
 			set_arguments.c				\
 			utils.c						\
 			time_utils.c				\
+			actions_utils.c				\
 			main.c
 
 OBJS = $(addprefix $(OBJ_PATH)/, $(SRC_NAME:.c=.o))
