@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:53:07 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/11 09:44:00 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/11 17:03:41 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ Arguments
 //================================= Defines ====================================
 # define TRUE	1
 # define FALSE	0
+
+# define FORK_AVAILABLE		0
+# define FORK_UNAVAILABLE	1
 
 // # define ACTION_TAKE__FORK	"has taken a fork"
 # define ACTION_TAKE_LEFT_FORK	"\e[1;36mhas taken a left fork\e[0m"
@@ -69,7 +72,8 @@ typedef struct s_philos
 	pthread_t		philo;
 	t_fork			*left;
 	t_fork			right;
-	int				*start_locker;
+	pthread_mutex_t	*main_locker;
+	int				*init_timer_bool;
 	unsigned long	init_time;
 	unsigned long	last_meal;
 	int				*is_alive;
@@ -109,8 +113,7 @@ void				print_time(t_philos *philos);
 int					init_timer(t_philos *philos);
 
 /* actions_utils.c */
-void				action_pickup_forks_evens(t_philos *phi);
-void				action_pickup_forks_odds(t_philos *phi);
+void				action_pickup_forks(t_philos *phi);
 void				action_drop_forcks(t_philos *phi);
 void				action_eating(t_philos *phi);
 void				action_died(t_philos *phi);

@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:24:47 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/10/10 16:32:48 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/11 17:03:59 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,66 +23,70 @@ void	*routine(void *philos)
 	phi = (t_philos *)philos;
 	wait_to_init(phi);
 	phi->init_time = get_current_time();
+	phi->last_meal = phi->init_time;
+	if (phi->id % 2 != 0)
+		usleep(2000);
 	while (1)
 	{
-		if (!is_everyone_alive(phi) || is_everyone_full_eat(phi))
+		pthread_mutex_lock(phi->main_locker);
+		if (*phi->is_alive == -1)
 		{
-			if (phi->is_alive == 0)
-				action_died(phi);
+			pthread_mutex_unlock(phi->main_locker);
+			break ;
 		}
-		if (phi->id % 2 == 0)
-			action_pickup_forks_odds(phi);
-		else
-			action_pickup_forks_evens(phi);
+		pthread_mutex_unlock(phi->main_locker);
+		if (!is_everyone_alive(phi))
+		{
+			action_died(phi);
+			break ;
+		}
+		if (!is_everyone_full_eat(phi))
+			break ;
+		action_pickup_forks(phi);
 		action_eating(phi);
-		break ;
 	}
-	print_philos_actions(phi, ACTION_THINKING);
 	return (NULL);
 }
 
 static int	is_everyone_alive(t_philos *phi)
 {
-	pthread_mutex_t	*locker;
-
-	locker = malloc(sizeof(pthread_mutex_t));
-	if (get_current_time() - phi->last_meal
-		> phi->t_life + get_current_time())
+	pthread_mutex_lock(phi->main_locker);
+	if (get_current_time() - phi->last_meal > phi->t_life)
 	{
-		printf("Aqui\n");
-		pthread_mutex_lock(locker);
-		phi->is_alive = 0;
-		pthread_mutex_unlock(locker);
-		pthread_mutex_destroy(locker);
+		*phi->is_alive = -1;
+		pthread_mutex_unlock(phi->main_locker);
 		return (0);
 	}
-	pthread_mutex_destroy(locker);
+	pthread_mutex_unlock(phi->main_locker);
 	return (1);
 }
 
-static int	is_everyone_full_eat(t_philos *phi)
+static int	is_everyone_full_eat(t_philos *philos)
 {
-	if (phi->nbr_eats == 0)
+	pthread_mutex_lock(philos->main_locker);
+	if (philos->nbr_eats == 0)
+	{
+		pthread_mutex_unlock(philos->main_locker);
 		return (0);
-	else
-		return (1);
+	}
+	pthread_mutex_unlock(philos->main_locker);
+	return (1);
 }
 
 static void	wait_to_init(t_philos *philos)
 {
 	int				nbr_philos;
-	pthread_mutex_t	lock;
 
 	nbr_philos = philos->nbr_philos;
-	pthread_mutex_init(&lock, NULL);
-	while (*philos->start_locker == 2)
+	while (1)
 	{
-		if (philos->id == nbr_philos)
+		pthread_mutex_lock(philos->main_locker);
+		if (philos->id == nbr_philos || *philos->init_timer_bool == 2)
 		{
-			pthread_mutex_lock(&lock);
-			*philos->start_locker = 1;
-			pthread_mutex_unlock(&lock);
+			*philos->init_timer_bool = 2;
+			pthread_mutex_unlock(philos->main_locker);
+			break ;
 		}
+		pthread_mutex_unlock(philos->main_locker);
 	}
-	pthread_mutex_destroy(&lock);
 }

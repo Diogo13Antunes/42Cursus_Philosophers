@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:27:10 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/10 14:36:12 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/11 17:12:12 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	init_forks(t_philos *philos)
 	{
 		if (pthread_mutex_init(&philos[i].right.lock, NULL))
 			return (-1);
-		philos[i].right.status = 0;
+		philos[i].right.status = FORK_AVAILABLE;
 		philos[i + 1].left = &philos[i].right;
 	}
 	philos[0].left = &philos[nbr_philos - 1].right;

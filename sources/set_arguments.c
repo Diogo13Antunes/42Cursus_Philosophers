@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:13:14 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/10 14:38:44 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/11 15:44:29 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,25 @@ void	set_data(t_data *data, char **args)
 
 t_philos	*init_data(t_philos *philos, t_data data)
 {
-	int	*init_locker;
-	int	*is_alive;
-	int	i;
+	pthread_mutex_t	*mutex;
+	int				*wait_initialize;
+	int				*is_alive;
+	int				i;
 
-	init_locker = malloc(sizeof(int));
 	is_alive = malloc(sizeof(int));
-	if (!init_locker || !is_alive)
+	wait_initialize = malloc(sizeof(int));
+	mutex = malloc(sizeof(pthread_mutex_t));
+	if (!is_alive || !mutex || !wait_initialize)
 		return (NULL);
-	*init_locker = 2;
+	pthread_mutex_init(mutex, NULL);
 	*is_alive = 1;
+	*wait_initialize = 1;
 	i = -1;
 	while (++i < data.nbr_philos)
 	{
 		philos[i].id = i + 1;
-		philos[i].start_locker = init_locker;
+		philos[i].main_locker = mutex;
+		philos[i].init_timer_bool = wait_initialize;
 		philos[i].nbr_philos = data.nbr_philos;
 		philos[i].t_life = data.t_life;
 		philos[i].t_eat = data.t_eat;
