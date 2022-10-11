@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:16:52 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/10 16:52:52 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/11 09:46:33 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	action_pickup_forks_odds(t_philos *phi)
 {
-	// if (phi->right.status || phi->left->status)
-	// 	return ;
 	pthread_mutex_lock(&phi->left->lock);
 	phi->left->status = 1;
 	print_philos_actions(phi, ACTION_TAKE_LEFT_FORK);
@@ -26,8 +24,6 @@ void	action_pickup_forks_odds(t_philos *phi)
 
 void	action_pickup_forks_evens(t_philos *phi)
 {
-	// if (phi->right.status || phi->left->status)
-	// 	return ;
 	pthread_mutex_lock(&phi->right.lock);
 	phi->right.status = 1;
 	print_philos_actions(phi, ACTION_TAKE_RIGHT_FORK);
@@ -54,9 +50,9 @@ void	action_eating(t_philos *phi)
 	action_drop_forcks(phi);
 }
 
+/* free variables */
 void	action_died(t_philos *phi)
 {
 	print_philos_actions(phi, ACTION_DIED);
-	// free das variaveis
 	return ;
 }
