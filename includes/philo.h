@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:53:07 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/10 16:13:37 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/11 09:44:00 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,11 @@ void				print_time(t_philos *philos);
 int					init_timer(t_philos *philos);
 
 /* actions_utils.c */
-void	action_pickup_forks_evens(t_philos *phi);
-void	action_pickup_forks_odds(t_philos *phi);
-void	action_drop_forcks(t_philos *phi);
-void	action_eating(t_philos *phi);
-void	action_died(t_philos *phi);
+void				action_pickup_forks_evens(t_philos *phi);
+void				action_pickup_forks_odds(t_philos *phi);
+void				action_drop_forcks(t_philos *phi);
+void				action_eating(t_philos *phi);
+void				action_died(t_philos *phi);
 
 //==============================================================================
 
