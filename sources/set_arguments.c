@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_arguments.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:13:14 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/11 15:44:29 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:51:17 by piriquito        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,7 @@ t_philos	*init_data(t_philos *philos, t_data data)
 		philos[i].id = i + 1;
 		philos[i].main_locker = mutex;
 		philos[i].init_timer_bool = wait_initialize;
-		philos[i].nbr_philos = data.nbr_philos;
-		philos[i].t_life = data.t_life;
-		philos[i].t_eat = data.t_eat;
-		philos[i].t_sleep = data.t_sleep;
-		philos[i].nbr_eats = data.nbr_eats;
+		philos[i].data = data;
 		philos[i].init_time = 0;
 		philos[i].last_meal = 0;
 		philos[i].is_alive = is_alive;

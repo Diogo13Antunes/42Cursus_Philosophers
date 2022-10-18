@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 17:03:52 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/10/11 11:12:10 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/18 15:16:19 by piriquito        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ static void	print_philos(t_philos *philos, int nbr_philos)
 	while (i < nbr_philos)
 	{
 		printf("[%d] ", philos[i].id);
-		printf("[%ld] ", philos[i].t_life);
-		printf("[%ld] ", philos[i].t_eat);
-		printf("[%ld] ", philos[i].t_sleep);
-		printf("[%d] ", philos[i].nbr_eats);
+		printf("[%d] ", philos[i].data.t_life);
+		printf("[%d] ", philos[i].data.t_eat);
+		printf("[%d] ", philos[i].data.t_sleep);
+		printf("[%d] ", philos[i].data.nbr_eats);
 		printf("\n");
 		i++;
 	}

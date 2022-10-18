@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_philosophers.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:27:10 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/11 17:12:12 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:56:53 by piriquito        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	init_forks(t_philos *philos)
 	int	nbr_philos;
 
 	i = -1;
-	nbr_philos = philos->nbr_philos;
+	nbr_philos = philos->data.nbr_philos;
 	while (++i < nbr_philos)
 	{
 		if (pthread_mutex_init(&philos[i].right.lock, NULL))

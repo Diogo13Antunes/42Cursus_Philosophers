@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:53:07 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/11 17:03:41 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/18 15:11:19 by piriquito        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ Arguments
 # define ACTION_THINKING		"\e[1;35mis thinking\e[0m"
 # define ACTION_DIED			"\e[1;31mdied\e[0m"
 
+# define STATUS_TAKING_FORK	0
+# define STATUS_EATING		1
+# define STATUS_SLEEPING	2
+# define STATUS_THINKING	3
+# define STATUS_DEAD		4
+
 //================================= Structs ====================================
 
 typedef struct s_data
@@ -64,11 +70,7 @@ typedef struct s_fork
 typedef struct s_philos
 {
 	int				id;
-	int				nbr_philos;
-	unsigned long	t_eat;
-	unsigned long	t_sleep;
-	unsigned long	t_life;
-	int				nbr_eats;
+	t_data			data;
 	pthread_t		philo;
 	t_fork			*left;
 	t_fork			right;
@@ -113,10 +115,10 @@ void				print_time(t_philos *philos);
 int					init_timer(t_philos *philos);
 
 /* actions_utils.c */
-void				action_pickup_forks(t_philos *phi);
+int					action_pickup_forks(t_philos *phi);
 void				action_drop_forcks(t_philos *phi);
-void				action_eating(t_philos *phi);
-void				action_died(t_philos *phi);
+int					action_eating(t_philos *phi);
+int					action_died(t_philos *phi);
 
 //==============================================================================
 
