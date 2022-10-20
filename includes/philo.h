@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
+/*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:53:07 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/18 15:11:19 by piriquito        ###   ########.fr       */
+/*   Updated: 2022/10/20 17:17:34 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ Arguments
 # define STATUS_SLEEPING	2
 # define STATUS_THINKING	3
 # define STATUS_DEAD		4
+# define STATUS_EXIT		5
 
 //================================= Structs ====================================
 
@@ -59,6 +60,7 @@ typedef struct s_data
 	int				t_sleep;
 	int				t_life;
 	int				nbr_eats;
+	int				nbr_forks;
 }				t_data;
 
 typedef struct s_fork
@@ -78,6 +80,7 @@ typedef struct s_philos
 	int				*init_timer_bool;
 	unsigned long	init_time;
 	unsigned long	last_meal;
+	unsigned long	start_sleep;
 	int				*is_alive;
 }				t_philos;
 
@@ -113,12 +116,19 @@ void				print_philos_actions(t_philos *philo, char *action);
 unsigned long int	get_current_time(void);
 void				print_time(t_philos *philos);
 int					init_timer(t_philos *philos);
+int					check_time_pass(unsigned long time, unsigned long t_pass);
 
 /* actions_utils.c */
 int					action_pickup_forks(t_philos *phi);
-void				action_drop_forcks(t_philos *phi);
 int					action_eating(t_philos *phi);
 int					action_died(t_philos *phi);
+int					action_sleeping(t_philos *phi);
+int					action_thinking(t_philos *phi);
+
+/* forks_handler.c */
+int					pickup_right_fork(t_philos *phi);
+int					pickup_left_fork(t_philos *phi);
+void				drop_forks(t_philos *phi);
 
 //==============================================================================
 

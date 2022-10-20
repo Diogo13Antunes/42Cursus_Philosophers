@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_arguments.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
+/*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:13:14 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/18 14:51:17 by piriquito        ###   ########.fr       */
+/*   Updated: 2022/10/20 16:48:07 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	set_data(t_data *data, char **args)
 		data->nbr_eats = ft_atoi(args[5]);
 	else
 		data->nbr_eats = -1;
+	data->nbr_forks = 0;
 }
 
 t_philos	*init_data(t_philos *philos, t_data data)
