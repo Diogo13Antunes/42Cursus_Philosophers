@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:24:47 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/10/20 17:33:48 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/20 18:02:59 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,14 @@ void	*routine(void *philos)
 static int	is_everyone_alive(t_philos *phi)
 {
 	pthread_mutex_lock(phi->main_locker);
-	if (*phi->is_alive == 0)
+	if (*phi->is_alive == 2)
 	{
 		pthread_mutex_unlock(phi->main_locker);
 		return (0);
 	}
-	if (get_current_time() - phi->last_meal > (unsigned long)phi->data.t_life)
+	if (get_current_time() - phi->last_meal >= (unsigned long)phi->data.t_life)
 	{
-		*phi->is_alive = 0;
+		*phi->is_alive = 2;
 		pthread_mutex_unlock(phi->main_locker);
 		action_died(phi);
 		return (0);

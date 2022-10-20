@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:16:52 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/20 17:37:43 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/20 17:55:39 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	action_thinking(t_philos *phi)
 	return (STATUS_TAKING_FORK);
 }
 
-/* free variables */
 int	action_died(t_philos *phi)
 {
 	print_philos_actions(phi, ACTION_DIED);

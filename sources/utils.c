@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 11:15:26 by piriquito         #+#    #+#             */
-/*   Updated: 2022/10/10 15:33:33 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/20 17:55:13 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,7 @@ void	ft_putstr_fd(char *str, int fd)
 void	print_philos_actions(t_philos *philo, char *action)
 {
 	unsigned long	time;
-	pthread_mutex_t	lock;
 
-	pthread_mutex_init(&lock, NULL);
-	pthread_mutex_lock(&lock);
 	time = get_current_time() - philo->init_time;
 	printf("%ld %d %s\n", time, philo->id, action);
-	pthread_mutex_unlock(&lock);
-	pthread_mutex_destroy(&lock);
 }
