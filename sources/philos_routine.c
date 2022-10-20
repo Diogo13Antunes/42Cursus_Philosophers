@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:24:47 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/10/20 19:25:42 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/20 19:30:02 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,20 +61,20 @@ static int	is_everyone_alive(t_philos *phi)
 
 static void	wait_to_init(t_philos *philos)
 {
-	// int	nbr_philos;
+	int	nbr_philos;
 
-	// nbr_philos = philos->data.nbr_philos;
-	// while (1)
-	// {
-	// 	pthread_mutex_lock(philos->main_locker);
-	// 	if (philos->id == nbr_philos || *philos->init_timer_bool == 2)
-	// 	{
-	// 		*philos->init_timer_bool = 2;
-	// 		pthread_mutex_unlock(philos->main_locker);
-	// 		break ;
-	// 	}
-	// 	pthread_mutex_unlock(philos->main_locker);
-	// }
+	nbr_philos = philos->data.nbr_philos;
+	while (1)
+	{
+		pthread_mutex_lock(philos->main_locker);
+		if (philos->id == nbr_philos || *philos->init_timer_bool == 2)
+		{
+			*philos->init_timer_bool = 2;
+			pthread_mutex_unlock(philos->main_locker);
+			break ;
+		}
+		pthread_mutex_unlock(philos->main_locker);
+	}
 	philos->init_time = get_current_time();
 	philos->last_meal = philos->init_time;
 }
