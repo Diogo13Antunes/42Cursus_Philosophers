@@ -6,7 +6,7 @@
 #    By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 14:53:11 by dcandeia          #+#    #+#              #
-#    Updated: 2022/10/20 17:16:12 by dcandeia         ###   ########.fr        #
+#    Updated: 2022/10/20 18:23:00 by dcandeia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ $(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
 	$(CC) -c $(CFLAGS) $(EXTRA_FLAGS) $(INCLUDES) $< -o $@
 
 norminette:
-	#clear
+	clear
 	@./norm.sh
 
 clean:
