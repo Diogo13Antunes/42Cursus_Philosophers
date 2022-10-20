@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:16:52 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/20 17:32:11 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/20 17:37:43 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	action_eating(t_philos *phi)
 	{
 		drop_forks(phi);
 		phi->start_sleep = get_current_time();
+		if (phi->data.nbr_eats != -1)
+			phi->data.nbr_eats--;
 		return (STATUS_SLEEPING);
 	}
 	return (STATUS_EATING);
