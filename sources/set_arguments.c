@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:13:14 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/20 16:48:07 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/20 19:27:26 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_philos	*init_data(t_philos *philos, t_data data)
 	if (!is_alive || !mutex || !wait_initialize)
 		return (NULL);
 	pthread_mutex_init(mutex, NULL);
-	*is_alive = 1;
+	*is_alive = ALIVE;
 	*wait_initialize = 1;
 	i = -1;
 	while (++i < data.nbr_philos)
@@ -49,6 +49,7 @@ t_philos	*init_data(t_philos *philos, t_data data)
 		philos[i].data = data;
 		philos[i].init_time = 0;
 		philos[i].last_meal = 0;
+		philos[i].start_sleep = 0;
 		philos[i].is_alive = is_alive;
 	}
 	return (philos);

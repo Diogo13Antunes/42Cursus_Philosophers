@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:53:07 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/20 17:17:34 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/20 19:27:05 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ Arguments
 # define STATUS_THINKING	3
 # define STATUS_DEAD		4
 # define STATUS_EXIT		5
+
+# define ALIVE				1
+# define DEAD				2
 
 //================================= Structs ====================================
 

@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:16:52 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/20 17:55:39 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/20 19:26:59 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	action_pickup_forks(t_philos *phi)
 	if (phi->data.nbr_forks == 2)
 	{
 		phi->last_meal = get_current_time();
-		phi->data.nbr_forks = 0;
 		print_philos_actions(phi, ACTION_EATING);
 		return (STATUS_EATING);
 	}
@@ -32,8 +31,11 @@ int	action_eating(t_philos *phi)
 	{
 		drop_forks(phi);
 		phi->start_sleep = get_current_time();
-		if (phi->data.nbr_eats != -1)
+		if (phi->data.nbr_eats > 0)
 			phi->data.nbr_eats--;
+		else if (phi->data.nbr_eats == 0)
+			return (STATUS_EXIT);
+		print_philos_actions(phi, ACTION_SLEEPING);
 		return (STATUS_SLEEPING);
 	}
 	return (STATUS_EATING);
@@ -42,10 +44,7 @@ int	action_eating(t_philos *phi)
 int	action_sleeping(t_philos *phi)
 {
 	if (check_time_pass(phi->start_sleep, phi->data.t_sleep))
-	{
-		print_philos_actions(phi, ACTION_SLEEPING);
 		return (STATUS_THINKING);
-	}
 	return (STATUS_SLEEPING);
 }
 

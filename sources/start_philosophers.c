@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_philosophers.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: piriquito <piriquito@student.42.fr>        +#+  +:+       +#+        */
+/*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:27:10 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/18 14:56:53 by piriquito        ###   ########.fr       */
+/*   Updated: 2022/10/20 19:12:50 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
