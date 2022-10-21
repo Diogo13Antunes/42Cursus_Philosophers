@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:16:52 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/21 16:13:57 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/21 17:13:30 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	action_pickup_forks(t_philos *phi)
 	else
 	{
 		phi->data.nbr_forks += pickup_left_fork(phi);
-		phi->data.nbr_forks += pickup_right_fork(phi);	
+		phi->data.nbr_forks += pickup_right_fork(phi);
 	}
 	if (phi->data.nbr_forks == 2)
 	{

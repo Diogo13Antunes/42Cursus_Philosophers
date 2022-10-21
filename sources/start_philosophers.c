@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:27:10 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/21 15:19:09 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/21 17:13:55 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_philos	*start_philos(t_data data)
 	if (init_forks(philos))
 	{
 		free_all_pointers(philos->init_timer_bool, philos->is_alive,
-		philos->main_locker);
+			philos->main_locker);
 		return (NULL);
 	}
 	return (philos);

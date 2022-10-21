@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:13:14 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/21 16:53:34 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/21 17:14:10 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	init_alloc_memory(t_philos **phi)
 	return (1);
 }
 
-void free_all_pointers(void *p1, void *p2, void *p3)
+void	free_all_pointers(void *p1, void *p2, void *p3)
 {
 	if (p1)
 		free(p1);
