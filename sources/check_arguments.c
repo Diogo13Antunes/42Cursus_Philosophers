@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_arguments.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diogoantunes <diogoantunes@student.42.f    +#+  +:+       +#+        */
+/*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 09:27:20 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/08/09 12:53:12 by diogoantune      ###   ########.fr       */
+/*   Updated: 2022/10/21 11:06:49 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	check_arguments(int ac, char **av)
 	}
 	else if (check_nbrs(av))
 	{
-		put_error_msg("Arguments bigger than 2147483647, 0 or negative.");
+		put_error_msg("Invalid Arguments");
 		return (-1);
 	}
 	return (0);

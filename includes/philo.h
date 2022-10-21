@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:53:07 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/20 19:27:05 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/21 12:48:08 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,9 @@ t_philos			*start_philos(t_data data);
 t_philos			*init_threads(t_philos *philos, int nbr_philos);
 unsigned long		get_time(void);
 
+/* alloc_mem.c */
+int					init_alloc_memory(t_philos **phi);
+
 /* philos_routine.c */
 void				*routine(void *philos);
 
@@ -126,7 +129,6 @@ int					action_pickup_forks(t_philos *phi);
 int					action_eating(t_philos *phi);
 int					action_died(t_philos *phi);
 int					action_sleeping(t_philos *phi);
-int					action_thinking(t_philos *phi);
 
 /* forks_handler.c */
 int					pickup_right_fork(t_philos *phi);

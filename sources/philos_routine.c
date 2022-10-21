@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:24:47 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/10/20 19:30:02 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/21 11:02:15 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ void	*routine(void *philos)
 	status = STATUS_TAKING_FORK;
 	if (phi->id % 2 != 0)
 		usleep(2000);
+	if (phi->id % 2 != 0 && phi->id == phi->data.nbr_philos)
+		usleep(500);
 	while (status != STATUS_DEAD && status != STATUS_EXIT)
 	{
+		usleep(100);
 		if (!is_everyone_alive(phi))
 			status = STATUS_DEAD;
 		else if (status == STATUS_TAKING_FORK)
@@ -35,8 +38,6 @@ void	*routine(void *philos)
 			status = action_eating(phi);
 		else if (status == STATUS_SLEEPING)
 			status = action_sleeping(phi);
-		else if (status == STATUS_THINKING)
-			status = action_thinking(phi);
 	}
 	return (NULL);
 }
@@ -55,7 +56,8 @@ static int	is_everyone_alive(t_philos *phi)
 		pthread_mutex_unlock(phi->main_locker);
 		return (0);
 	}
-	pthread_mutex_unlock(phi->main_locker);
+	else
+		pthread_mutex_unlock(phi->main_locker);
 	return (1);
 }
 
@@ -73,7 +75,8 @@ static void	wait_to_init(t_philos *philos)
 			pthread_mutex_unlock(philos->main_locker);
 			break ;
 		}
-		pthread_mutex_unlock(philos->main_locker);
+		else
+			pthread_mutex_unlock(philos->main_locker);
 	}
 	philos->init_time = get_current_time();
 	philos->last_meal = philos->init_time;

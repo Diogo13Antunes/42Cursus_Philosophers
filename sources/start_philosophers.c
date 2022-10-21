@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:27:10 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/20 19:12:50 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/21 11:10:26 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ t_philos	*start_philos(t_data data)
 	if (!philos)
 		return (NULL);
 	if (init_forks(philos))
+	{
+		philos.
 		return (NULL);
+	}
 	return (philos);
 }
