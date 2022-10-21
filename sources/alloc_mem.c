@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 12:42:20 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/21 12:45:40 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/21 12:49:36 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,4 @@ int	init_alloc_memory(t_philos **phi)
 	}
 	set_alloc_mem(phi, is_alive, wait_initialize, mutex);
 	return (1);
-}
-
-void	set_alloc_mem(t_philos **phi, int alive, int wait, pthread_mutex_t *m)
-{
-	
 }
