@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:53:07 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/21 12:48:08 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/21 16:53:42 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,14 @@ Arguments
 # define FORK_UNAVAILABLE	1
 
 // # define ACTION_TAKE__FORK	"has taken a fork"
-# define ACTION_TAKE_LEFT_FORK	"\e[1;36mhas taken a left fork\e[0m"
-# define ACTION_TAKE_RIGHT_FORK	"\e[1;36mhas taken a right fork\e[0m"
-# define ACTION_EATING			"\e[1;33mis eating\e[0m"
-# define ACTION_SLEEPING		"\e[1;34mis sleeping\e[0m"
-# define ACTION_THINKING		"\e[1;35mis thinking\e[0m"
-# define ACTION_DIED			"\e[1;31mdied\e[0m"
+// # define ACTION_TAKE_LEFT_FORK	"has taken a left fork"
+// # define ACTION_TAKE_RIGHT_FORK	"has taken a right fork"
+# define ACTION_TAKE_LEFT_FORK	"has taken a fork"
+# define ACTION_TAKE_RIGHT_FORK	"has taken a fork"
+# define ACTION_EATING			"is eating"
+# define ACTION_SLEEPING		"is sleeping"
+# define ACTION_THINKING		"is thinking"
+# define ACTION_DIED			"died"
 
 # define STATUS_TAKING_FORK	0
 # define STATUS_EATING		1
@@ -64,6 +66,7 @@ typedef struct s_data
 	int				t_life;
 	int				nbr_eats;
 	int				nbr_forks;
+	unsigned long	init_time;
 }				t_data;
 
 typedef struct s_fork
@@ -81,7 +84,6 @@ typedef struct s_philos
 	t_fork			right;
 	pthread_mutex_t	*main_locker;
 	int				*init_timer_bool;
-	unsigned long	init_time;
 	unsigned long	last_meal;
 	unsigned long	start_sleep;
 	int				*is_alive;
@@ -106,6 +108,7 @@ unsigned long		get_time(void);
 
 /* alloc_mem.c */
 int					init_alloc_memory(t_philos **phi);
+void				free_all_pointers(void *p1, void *p2, void *p3);
 
 /* philos_routine.c */
 void				*routine(void *philos);

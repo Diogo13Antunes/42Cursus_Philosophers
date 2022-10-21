@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:41:08 by piriquito         #+#    #+#             */
-/*   Updated: 2022/10/20 16:36:58 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/21 17:00:42 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_time(t_philos *philos)
 {
 	unsigned long	current_time;
 
-	current_time = get_current_time() - philos->init_time;
+	current_time = get_current_time() - philos->data.init_time;
 	printf("Time [%d] = %ld\n", philos->id, current_time);
 }
 

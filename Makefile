@@ -6,7 +6,7 @@
 #    By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 14:53:11 by dcandeia          #+#    #+#              #
-#    Updated: 2022/10/20 18:23:00 by dcandeia         ###   ########.fr        #
+#    Updated: 2022/10/21 15:21:22 by dcandeia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = philo
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g
-EXTRA_FLAGS = -fsanitize=thread -pthread
+EXTRA_FLAGS = -pthread #-fsanitize=address
 RM = rm -f
 
 $(VERBOSE).SILENT:

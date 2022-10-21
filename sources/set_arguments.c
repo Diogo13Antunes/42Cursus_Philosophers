@@ -6,15 +6,25 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:13:14 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/21 12:47:58 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/21 16:53:34 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	set_alloc_mem(t_philos **phi, int alive, int wait, pthread_mutex_t *m)
+void	set_alloc_mem(t_philos **phi, int *alive, int *wait, pthread_mutex_t *m)
 {
-	
+	int	i;
+
+	i = -1;
+	*alive = ALIVE;
+	*wait = 0;
+	while (++i < (*phi)->data.nbr_philos)
+	{
+		(*phi)[i].init_timer_bool = wait;
+		(*phi)[i].is_alive = alive;
+		(*phi)[i].main_locker = m;
+	}
 }
 
 void	set_data(t_data *data, char **args)
@@ -28,6 +38,7 @@ void	set_data(t_data *data, char **args)
 	else
 		data->nbr_eats = -1;
 	data->nbr_forks = 0;
+	data->init_time = get_current_time();
 }
 
 t_philos	*init_data(t_philos *philos, t_data data)
@@ -39,7 +50,6 @@ t_philos	*init_data(t_philos *philos, t_data data)
 	{
 		philos[i].id = i + 1;
 		philos[i].data = data;
-		philos[i].init_time = 0;
 		philos[i].last_meal = 0;
 		philos[i].start_sleep = 0;
 	}
@@ -48,7 +58,7 @@ t_philos	*init_data(t_philos *philos, t_data data)
 	return (philos);
 }
 
-static int	init_alloc_memory(t_philos **phi)
+int	init_alloc_memory(t_philos **phi)
 {
 	pthread_mutex_t	*mutex;
 	int				*wait_initialize;
@@ -70,7 +80,6 @@ static int	init_alloc_memory(t_philos **phi)
 	set_alloc_mem(phi, is_alive, wait_initialize, mutex);
 	return (1);
 }
-
 
 void free_all_pointers(void *p1, void *p2, void *p3)
 {

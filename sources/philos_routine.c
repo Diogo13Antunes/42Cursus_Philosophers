@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:24:47 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/10/21 11:02:15 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/21 16:54:49 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@ void	*routine(void *philos)
 	wait_to_init(phi);
 	status = STATUS_TAKING_FORK;
 	if (phi->id % 2 != 0)
-		usleep(2000);
+		usleep((phi->data.t_eat * 1000) / 2);
 	if (phi->id % 2 != 0 && phi->id == phi->data.nbr_philos)
 		usleep(500);
 	while (status != STATUS_DEAD && status != STATUS_EXIT)
 	{
-		usleep(100);
 		if (!is_everyone_alive(phi))
 			status = STATUS_DEAD;
 		else if (status == STATUS_TAKING_FORK)
@@ -78,6 +77,5 @@ static void	wait_to_init(t_philos *philos)
 		else
 			pthread_mutex_unlock(philos->main_locker);
 	}
-	philos->init_time = get_current_time();
-	philos->last_meal = philos->init_time;
+	philos->last_meal = philos->data.init_time;
 }
