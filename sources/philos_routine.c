@@ -6,14 +6,13 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:24:47 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/10/21 16:54:49 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/24 16:06:10 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
 static void	wait_to_init(t_philos *philos);
-static int	is_everyone_alive(t_philos *phi);
 
 void	*routine(void *philos)
 {
@@ -41,7 +40,7 @@ void	*routine(void *philos)
 	return (NULL);
 }
 
-static int	is_everyone_alive(t_philos *phi)
+int	is_everyone_alive(t_philos *phi)
 {
 	pthread_mutex_lock(phi->main_locker);
 	if (get_current_time() - phi->last_meal >= (unsigned long)phi->data.t_life
@@ -55,8 +54,7 @@ static int	is_everyone_alive(t_philos *phi)
 		pthread_mutex_unlock(phi->main_locker);
 		return (0);
 	}
-	else
-		pthread_mutex_unlock(phi->main_locker);
+	pthread_mutex_unlock(phi->main_locker);
 	return (1);
 }
 

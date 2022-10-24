@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:13:14 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/21 17:14:10 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/24 16:05:23 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	set_alloc_mem(t_philos **phi, int *alive, int *wait, pthread_mutex_t *m)
 
 void	set_data(t_data *data, char **args)
 {
+	unsigned long	buffer;
+
 	data->nbr_philos = ft_atoi(args[1]);
 	data->t_life = ft_atoi(args[2]);
 	data->t_eat = ft_atoi(args[3]);
@@ -38,12 +40,16 @@ void	set_data(t_data *data, char **args)
 	else
 		data->nbr_eats = -1;
 	data->nbr_forks = 0;
-	data->init_time = get_current_time();
+
+	buffer = get_current_time();
+	data->init_time = buffer;
+	while (data->init_time == buffer)
+		data->init_time = get_current_time();
 }
 
 t_philos	*init_data(t_philos *philos, t_data data)
 {
-	int				i;
+	int	i;
 
 	i = -1;
 	while (++i < data.nbr_philos)

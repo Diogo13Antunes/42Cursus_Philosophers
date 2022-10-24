@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:53:07 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/21 16:53:42 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/24 16:30:33 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,11 @@ unsigned long		get_time(void);
 /* alloc_mem.c */
 int					init_alloc_memory(t_philos **phi);
 void				free_all_pointers(void *p1, void *p2, void *p3);
+int					free_allocated_memory(t_philos *philos);
 
 /* philos_routine.c */
 void				*routine(void *philos);
+int					is_everyone_alive(t_philos *phi);
 
 /* set_arguments.c */
 void				set_data(t_data *data, char **args);
