@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 12:42:20 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/24 16:32:57 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/25 10:53:33 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	free_allocated_memory(t_philos *philos)
 	while (++i < philos->data.nbr_philos)
 	{
 		pthread_mutex_destroy(&philos[i].right.lock);
-		free(&philos[i].right.lock);
+		//free(&philos[i].right.lock);
 	}
 	return (0);
 }

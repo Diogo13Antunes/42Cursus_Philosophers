@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:24:47 by diogoantune       #+#    #+#             */
-/*   Updated: 2022/10/24 16:06:10 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/25 11:04:35 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ int	is_everyone_alive(t_philos *phi)
 		if (*phi->is_alive == ALIVE)
 		{
 			*phi->is_alive = DEAD;
+			pthread_mutex_unlock(phi->main_locker);
 			action_died(phi);
 		}
-		pthread_mutex_unlock(phi->main_locker);
+		else
+			pthread_mutex_unlock(phi->main_locker);
 		return (0);
 	}
 	pthread_mutex_unlock(phi->main_locker);
