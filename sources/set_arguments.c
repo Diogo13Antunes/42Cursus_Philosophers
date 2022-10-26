@@ -6,7 +6,7 @@
 /*   By: dcandeia <dcandeia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:13:14 by dcandeia          #+#    #+#             */
-/*   Updated: 2022/10/25 11:06:27 by dcandeia         ###   ########.fr       */
+/*   Updated: 2022/10/26 11:26:30 by dcandeia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	set_data(t_data *data, char **args)
 	else
 		data->nbr_eats = -1;
 	data->nbr_forks = 0;
-
 	buffer = get_current_time();
 	data->init_time = buffer;
 	while (data->init_time == buffer)
